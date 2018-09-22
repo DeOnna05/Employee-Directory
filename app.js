@@ -13,13 +13,16 @@ $('#view').on("click", showAll);
 
 //user can add new input name, office number, and phone number and returns the updated employee list - needs a input box to enter new information
 
-
 const newInfo = function(){
     //variables for new values to be held
     const newName = $('#name').val();
     const newOffice = $('#office').val(); //getting pushed as string instead of number
     const newPhone = $('#phone').val();
+
+    
+    if(confirm("Please verify all of the following information is correct before continuing:\n\nName: " + newName + "\nOffice Number: " + newOffice + "\nPhone Number: " + newPhone + "\n\nPress OK to save or Cancel to go back")){
     //pushing new values to list in an object
+   
     employeeList.push({
         name: newName, 
         officeNum: newOffice, 
@@ -29,7 +32,13 @@ const newInfo = function(){
     $('#name').val(''); 
     $('#office').val(''); 
     $('#phone').val('');
-}
+    alert("Thank you! " + newName + " has been added to the Employee Directory");
+} else {
+    $('#name').val(''); 
+    $('#office').val(''); 
+    $('#phone').val('');
+};
+};
 
 $('#add').on("click", newInfo); 
 
@@ -39,4 +48,4 @@ $('#verify').on("click", ) //after user inputs a name, it returns yes if the emp
 $('#update').on("click", ) //user inputs existing name, office number and phone number and updates the office number and phone number then returns updated employee list 
 
 
-$('#delete').on("click", ) //slice/splice
+$('#delete').on("click", ) 
