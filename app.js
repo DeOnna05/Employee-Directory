@@ -9,17 +9,17 @@ for(let i = 0; i < employeeList.length; i++){
   }
 }
 
-$('#view').on("click", showAll); 
+$('#view').on("click", showAll); //listener for view button
 
-//user can add new input name, office number, and phone number and returns the updated employee list - needs a input box to enter new information
+//user can add new input name, office number, and phone number and returns the updated employee list - needs a input to enter new information
 
 const newInfo = function(){
-    //variables for new values to be held
+    //variables for new values to be held and validated
     const newName = $('#name').val();
-    const newOffice = $('#office').val(); //getting pushed as string instead of number
+    const newOffice = $('#office').val(); //newOffice num getting pushed as string instead of number
     const newPhone = $('#phone').val();
 
-    
+    //confirm screen to verify newInfo before saving
     if(confirm("Please verify all of the following information is correct before continuing:\n\nName: " + newName + "\nOffice Number: " + newOffice + "\nPhone Number: " + newPhone + "\n\nPress OK to save or Cancel to go back")){
     //pushing new values to list in an object
    
@@ -33,19 +33,46 @@ const newInfo = function(){
     $('#office').val(''); 
     $('#phone').val('');
     alert("Thank you! " + newName + " has been added to the Employee Directory");
-} else {
+} else { //option to cancel newInfo
     $('#name').val(''); 
     $('#office').val(''); 
     $('#phone').val('');
 };
 };
 
-$('#add').on("click", newInfo); 
+$('#add').on("click", newInfo);  //listener for add button
+
+//after user inputs a name, it returns yes if the employee exists and no if not. (if/else statement)
+
+function checkList(){
+    //variables to store data that is entered to compare later
+    const nameInput = $('#name').val();
+    const officeInput = $('#office').val();
+    const phoneInput = $('#phone').val();
+    
+    if(employeeList.includes(nameInput) && employeeList.includes(officeInput) && employeeList.includes(nameInput)) {
+        alert("Employee is already on the list");
+            $('#name').val(''); 
+            $('#office').val(''); 
+            $('#phone').val('');
+    } else {
+        alert("Employee is not on the list. Please select ADD button to add employee to list.");
+            $('#name').val(''); 
+            $('#office').val(''); 
+            $('#phone').val('');
+    }
+
+};
+
+$('#verify').on("click", checkList) //listener for verify
 
 
-$('#verify').on("click", ) //after user inputs a name, it returns yes if the employee exists and no if not. (if/else statement)
+//user inputs existing name, office number and phone number and updates the office number and phone number then returns updated employee list 
 
-$('#update').on("click", ) //user inputs existing name, office number and phone number and updates the office number and phone number then returns updated employee list 
+function changeInput (){
+
+}
+$('#update').on("click", ) 
 
 
 $('#delete').on("click", ) 
