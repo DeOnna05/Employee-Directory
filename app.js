@@ -1,12 +1,12 @@
 //for loop to display all employees from the array in employeeList.js
 const showAll = function(){  
   $('.content').empty();
-
+//loop through employee list and show all content in paragrapgh
 for(let i = 0; i < employeeList.length; i++){
     $('.content').append(`<p>${employeeList[i].name}</p>`)
     $('.content').append(`<p>${employeeList[i].officeNum}</p>`);
     $('.content').append(`<p>${employeeList[i].phoneNum}</p>`);
-  }
+  } //how can I put a border around each contact
 }
 
 $('#view').on("click", showAll); //listener for view button
@@ -28,11 +28,13 @@ const newInfo = function(){
         officeNum: newOffice, 
         phoneNum: newPhone
     });
-    //clear input fields and return updated list
+    //clear input fields
     $('#name').val(''); 
     $('#office').val(''); 
     $('#phone').val('');
     alert("Thank you! " + newName + " has been added to the Employee Directory");
+    //show updated employee list
+    showAll();
 } else { //option to cancel newInfo
     $('#name').val(''); 
     $('#office').val(''); 
@@ -47,23 +49,23 @@ $('#add').on("click", newInfo);  //listener for add button
 function checkList(){
     //variables to store data that is entered to compare later
     const nameInput = $('#name').val();
-    const officeInput = $('#office').val();
-    const phoneInput = $('#phone').val();
     
-    if(employeeList.includes(nameInput) && employeeList.includes(officeInput) && employeeList.includes(nameInput)) {
-        alert("Employee is already on the list");
+   for(let i = 0; i < employeeList.length; i++){
+//loop through the employee list to see if name input matches name in list
+    if(nameInput === employeeList[i].name)  {
+        document.querySelector('.true').innerText = 'That employee is already in the directory';
             $('#name').val(''); 
             $('#office').val(''); 
-            $('#phone').val('');
+            $('#phone').val(''); 
     } else {
-        alert("Employee is not on the list. Please select ADD button to add employee to list.");
+       document.querySelector('.false').innerText = 'That employee is not in the directory';
             $('#name').val(''); 
             $('#office').val(''); 
             $('#phone').val('');
     }
 
 };
-
+};
 $('#verify').on("click", checkList) //listener for verify
 
 
@@ -73,6 +75,28 @@ function changeInput (){
 
 }
 $('#update').on("click", ) 
+   
 
 
-$('#delete').on("click", ) 
+
+
+
+
+
+
+
+
+//Deletes employee with the matching name and then returns the new employee list
+function removeContact(){
+    const nameInput = $('#name').val(''); 
+    //finds index of name input and splices it out
+employeeList.splice(employeeList.indexOf(nameInput), 1)
+    $('#name').val(''); 
+    //shows updated employee list
+    showAll();
+}
+
+
+$('#delete').on("click", removeContact) //listener for removeContact
+
+
