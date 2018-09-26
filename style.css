@@ -1,4 +1,45 @@
 
-/* p {
-    border: solid black 2px; how can I change the javascript to back this border around each contact?
-} */
+fieldset {
+    background-color: black;
+    height: -webkit-fill-available;
+    width: 20%;
+    min-width: 0;
+    padding: 7%;
+    margin: 0;
+    border: 0;
+    float: left;
+    }
+
+input {
+    margin: 5px;
+}
+
+.nav-item {
+    background-color: black;
+    color: white;
+    border: none;
+}
+
+.content {
+    padding-top: 6%;
+    margin-right: 40%;
+    margin-left: 20%;
+}
+
+.fixed-top{
+    left: 20%;
+}
+
+.contact {
+    border: solid black 1px;
+    margin: 1px;
+    padding: 5px;
+}
+
+.nav-item {
+    margin: 5%;
+}
+
+#deleteForm {
+    display: none;
+}

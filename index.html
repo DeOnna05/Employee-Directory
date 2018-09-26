@@ -2,35 +2,73 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-  <div class="topbar">
-      First Name: <input id="name" type="text" placeholder="Jane"> 
-      Office Number: <input id="office" type="number" placeholder="123"> 
-      Phone Number: <input id="phone" type="tel" placeholder="555-555-5555" > 
-  </div>
 
- <div class="content"></div>
+  <fieldset>
 
-  <div class="sidebar">
-    <button id="view">VIEW</button>
-    <Button id="add">ADD</Button>
-    <Button id="verify">VERIFY</Button>
-    <Button id="update">UPDATE</Button>
-    <Button id="delete">DELETE</Button>
+    <div class="btn-group-vertical">
+      <button class="nav-item" id="view">VIEW</button>
+      <Button class="nav-item" id="add">ADD</Button>
+      <Button class="nav-item" id="verify">VERIFY</Button>
+      <Button class="nav-item" id="update">UPDATE</Button>
+      <Button class="nav-item" id="deleteField">DELETE</Button>
+    </div>
 
-  <div class="verify">
-    <p class="true"></p>
+  </fieldset>
+</div>
+<div class="container-fluid">
 
-    <p class="false"></p>
-  </div>
+    <nav class="navbar fixed-top navbar-light bg-light">
+    <div class="row">
+        
+      <div class="input-group">
+    
+        <div class="input-group-prepend">
+    
+          <input id="name" type="text" aria-describedby="inputGroup-sizing-default" placeholder="First Name">
+        </div>
+    
+        <div class="input-group-prepend">
+          <input id="office" type="number" aria-describedby="inputGroup-sizing-default" placeholder="Office Number">
+        </div>
+    
+        <div class="input-group-prepend">
+          <input id="phone" type="tel" aria-describedby="inputGroup-sizing-default" placeholder="Phone Number">
+    
+        </div>
 
+        <div id="deleteForm">
+            <input type="text" id="deleteName" placeholder="Enter Employee to Delete">
+            <button id="delete">Submit</button>
+          </div>
+          
+      </nav>
+
+      <div class="content"></div>
+        <div class="verify">
+          <p class="true"></p>
+          <p class="false"></p>
+        </div>
+
+        
+
+      </div>
+    </div>
+  
+
+      
+
+      
+   
+  
 </div>
 
 
@@ -40,6 +78,11 @@
 
 
 
+
+
+
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
   <script src="dom.js"></script>
   <script src="employeeList.js"></script>
   <script src="app.js"></script>

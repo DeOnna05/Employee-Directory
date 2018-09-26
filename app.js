@@ -1,15 +1,14 @@
 //for loop to display all employees from the array in employeeList.js
 const showAll = function(){  
-  $('.content').empty();
+//   $('.content').empty();
+
 //loop through employee list and show all content in paragrapgh
 for(let i = 0; i < employeeList.length; i++){
-    $('.content').append(`<p>${employeeList[i].name}</p>`)
-    $('.content').append(`<p>${employeeList[i].officeNum}</p>`);
-    $('.content').append(`<p>${employeeList[i].phoneNum}</p>`);
+    $('.content').append("<div class='contact'><p>" + (employeeList[i].name) + "</p>" + "<p>" + (employeeList[i].officeNum) + "</p>" + "<p>" + (employeeList[i].phoneNum) + "</p>" + "</div>");
   } //how can I put a border around each contact
 }
 
-$('#view').on("click", showAll); //listener for view button
+
 
 //user can add new input name, office number, and phone number and returns the updated employee list - needs a input to enter new information
 
@@ -29,6 +28,7 @@ const newInfo = function(){
         phoneNum: newPhone
     });
     //clear input fields
+    
     $('#name').val(''); 
     $('#office').val(''); 
     $('#phone').val('');
@@ -42,61 +42,67 @@ const newInfo = function(){
 };
 };
 
-$('#add').on("click", newInfo);  //listener for add button
+
 
 //after user inputs a name, it returns yes if the employee exists and no if not. (if/else statement)
-
-function checkList(){
+function checkList() {
     //variables to store data that is entered to compare later
     const nameInput = $('#name').val();
+    $(".true").empty();
+    $(".false").empty();
+    let names = [];
+    for (let i = 0; i < employeeList.length; i++) {
+        //loop through the employee list to see if name input matches name in list
+        names.push(employeeList[i].name)
+    };
     
-   for(let i = 0; i < employeeList.length; i++){
-//loop through the employee list to see if name input matches name in list
-    if(nameInput === employeeList[i].name)  {
+    if (names.indexOf(nameInput) > -1) {
+        console.log("True");
         document.querySelector('.true').innerText = 'That employee is already in the directory';
-            $('#name').val(''); 
-            $('#office').val(''); 
-            $('#phone').val(''); 
+        $('#name').val('');
+        $('#office').val('');
+        $('#phone').val('');
+        return true;
     } else {
-       document.querySelector('.false').innerText = 'That employee is not in the directory';
-            $('#name').val(''); 
-            $('#office').val(''); 
-            $('#phone').val('');
+        console.log("false");
+        document.querySelector('.false').innerText = 'That employee is not in the directory';
+        $('#name').val('');
+        $('#office').val('');
+        $('#phone').val('');
+        return false;
     }
+};
 
-};
-};
-$('#verify').on("click", checkList) //listener for verify
 
 
 //user inputs existing name, office number and phone number and updates the office number and phone number then returns updated employee list 
 
 function changeInput (){
-
-}
-$('#update').on("click", ) 
-   
-
-
-
-
-
-
-
-
-
-
-//Deletes employee with the matching name and then returns the new employee list
-function removeContact(){
-    const nameInput = $('#name').val(''); 
-    //finds index of name input and splices it out
-employeeList.splice(employeeList.indexOf(nameInput), 1)
-    $('#name').val(''); 
-    //shows updated employee list
+    const i = employeeList.findIndex(e => e.name === $('#name').val());
+    employeeList[i].officeNum = $('#office').val();
+    employeeList[i].phoneNum = $('#phone').val();
     showAll();
 }
 
+function removeContact() {
+    let contact = $('#deleteName').val();
+    for (let i = 0; i < employeeList.length; i++) {
+        if (contact === employeeList[i].name) {
+            employeeList.splice(i, 1);
+            showAll();
+        }
+    }
+}
 
+function showDelete(){
+    document.getElementById('deleteForm').style.display = 'block'
+
+}
+//Event listeners
+$('#view').on("click", showAll); //listener for view button
 $('#delete').on("click", removeContact) //listener for removeContact
-
+$('#deleteField').on("click", showDelete)
+$('#update').on("click", changeInput) 
+$('#verify').on("click", checkList) //listener for verify
+$('#add').on("click", newInfo);  //listener for add button
 
